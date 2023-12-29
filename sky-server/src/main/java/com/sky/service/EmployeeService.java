@@ -36,4 +36,18 @@ public interface EmployeeService {
      * @return :
      */
     void enableOrDisable(Integer status, long id);
+
+    /**
+     * 功能描述: 根据id查询员工信息
+     * @param id
+     * @return :
+     */
+    Employee getById(Long id);
+
+    /**
+     * 功能描述: 编辑员工信息
+     * @param employeeDTO
+     * @return :
+     */
+    void update(EmployeeDTO employeeDTO);
 }
