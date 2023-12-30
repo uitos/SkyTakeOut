@@ -1,5 +1,6 @@
 package com.sky.service;
 
+import com.sky.dto.CategoryDTO;
 import com.sky.dto.CategoryPageQueryDTO;
 import com.sky.result.PageResult;
 import org.springframework.stereotype.Service;
@@ -13,4 +14,11 @@ public interface CategoryService {
      */
 
     PageResult pageQuery(CategoryPageQueryDTO categoryPageQueryDTO);
+
+    /**
+     * 功能描述: 新增分类
+     * @param categoryDTO
+     * @return :
+     */
+    void save(CategoryDTO categoryDTO);
 }

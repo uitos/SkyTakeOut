@@ -4,6 +4,7 @@
 <mapper namespace="com.sky.mapper.CategoryMapper">
 
 
+
     <select id="pageQuery" resultType="Category">
         select * from category
         <where>

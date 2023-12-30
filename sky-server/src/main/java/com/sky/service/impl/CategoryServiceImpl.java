@@ -2,6 +2,9 @@ package com.sky.service.impl;
 
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
+import com.sky.constant.StatusConstant;
+import com.sky.context.BaseContext;
+import com.sky.dto.CategoryDTO;
 import com.sky.dto.CategoryPageQueryDTO;
 import com.sky.entity.Category;
 import com.sky.mapper.CategoryMapper;
@@ -11,8 +14,11 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
-
+/**
+ * 功能描述: 分类业务层
+ */
 @Service
 public class CategoryServiceImpl implements CategoryService {
     @Autowired
@@ -32,5 +38,23 @@ public class CategoryServiceImpl implements CategoryService {
         long total = page.getTotal();
         List<Category> records = page.getResult();
         return new PageResult(total,records);
+    }
+
+    /**
+     * 功能描述: 新增分类
+     * @param categoryDTO
+     * @return :
+     */
+    @Override
+    public void save(CategoryDTO categoryDTO) {
+        Category category = new Category();
+        BeanUtils.copyProperties(categoryDTO,category);
+        category.setStatus(StatusConstant.DISABLE);
+        category.setCreateTime(LocalDateTime.now());
+        category.setCreateUser(BaseContext.getCurrentId());
+        category.setUpdateTime(LocalDateTime.now());
+        category.setUpdateUser(BaseContext.getCurrentId());
+        categoryMapper.insert(category);
+
     }
 }
