@@ -58,9 +58,32 @@ public class CategoryController {
     @PostMapping("/status/{status}")
     @ApiOperation("启用禁用分类")
     public Result enableOrDisable(@PathVariable Integer status,long id){
+        log.info("启用禁用分类,{},{}",status,id);
         categoryService.enableOrDisable(status,id);
         return Result.success();
 
     }
-
+    /**
+     * 功能描述: 修改分类
+     * @param categoryDTO
+     * @return :
+     */
+    @PutMapping
+    @ApiOperation("修改分类")
+    public Result update(@RequestBody CategoryDTO categoryDTO){
+        log.info("修改分类,{}",categoryDTO);
+        categoryService.update(categoryDTO);
+        return Result.success();
+    }
+    /**
+     * 功能描述: 根据id删除分类
+     * @param id
+     * @return :
+     */
+    @DeleteMapping
+    @ApiOperation("根据id删除分类")
+    public Result delete(Long id){
+        categoryService.deleteById(id);
+        return  Result.success();
+    }
 }

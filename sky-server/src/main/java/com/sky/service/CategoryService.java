@@ -29,4 +29,18 @@ public interface CategoryService {
      * @return :
      */
     void enableOrDisable(Integer status, long id);
+
+    /**
+     * 功能描述: 修改分类
+     * @param categoryDTO
+     * @return :
+     */
+    void update(CategoryDTO categoryDTO);
+
+    /**
+     * 功能描述: 根据id删除分类
+     * @param id
+     * @return :
+     */
+    void deleteById(Long id);
 }
