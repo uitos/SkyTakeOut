@@ -21,4 +21,12 @@ public interface CategoryService {
      * @return :
      */
     void save(CategoryDTO categoryDTO);
+
+    /**
+     * 功能描述: 启用禁用分类
+     * @param status
+     * @param id
+     * @return :
+     */
+    void enableOrDisable(Integer status, long id);
 }

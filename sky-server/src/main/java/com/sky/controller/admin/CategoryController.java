@@ -49,4 +49,18 @@ public class CategoryController {
         return Result.success();
 
     }
+    /**
+     * 功能描述: 启用禁用分类
+     * @param status
+     * @param id
+     * @return :
+     */
+    @PostMapping("/status/{status}")
+    @ApiOperation("启用禁用分类")
+    public Result enableOrDisable(@PathVariable Integer status,long id){
+        categoryService.enableOrDisable(status,id);
+        return Result.success();
+
+    }
+
 }

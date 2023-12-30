@@ -25,4 +25,11 @@ public interface CategoryMapper {
             "value " +
             "(#{type}, #{name}, #{sort}, #{status}, #{createTime}, #{updateTime}, #{createUser}, #{updateUser})")
     void insert(Category category);
+
+    /**
+     * 功能描述: 启用禁用分类
+     * @param category
+     * @return :
+     */
+    void update(Category category);
 }

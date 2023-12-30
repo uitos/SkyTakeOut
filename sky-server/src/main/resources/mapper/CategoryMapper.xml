@@ -2,9 +2,6 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.sky.mapper.CategoryMapper">
-
-
-
     <select id="pageQuery" resultType="Category">
         select * from category
         <where>
@@ -17,4 +14,18 @@
         </where>
         order by sort asc , create_time desc
     </select>
+    <update id="update" parameterType="category">
+        update category
+        <set>
+            <if test="type !=null">type =#{type},</if>
+            <if test="name !=null">name =#{name},</if>
+            <if test="sort !=null">sort =#{sort},</if>
+            <if test="status !=null">status =#{status},</if>
+            <if test="createTime !=null">create_time =#{createTime},</if>
+            <if test="updateTime !=null">update_time =#{updateTime},</if>
+            <if test="createUser !=null">create_user =#{createUser},</if>
+            <if test="updateUser !=null">update_user =#{updateUser},</if>
+        </set>
+        where id =#{id}
+    </update>
 </mapper>
