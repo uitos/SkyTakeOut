@@ -2,8 +2,11 @@ package com.sky.service;
 
 import com.sky.dto.CategoryDTO;
 import com.sky.dto.CategoryPageQueryDTO;
+import com.sky.entity.Category;
 import com.sky.result.PageResult;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 public interface CategoryService {
 
@@ -43,4 +46,11 @@ public interface CategoryService {
      * @return :
      */
     void deleteById(Long id);
+
+    /**
+     * 功能描述: 
+     * @param type 
+     * @return : 根据类型查询分类
+     */
+    List<Category> list(Integer type);
 }
