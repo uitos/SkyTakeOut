@@ -7,7 +7,7 @@ sky:
     username: root
     password: 123456
   txcos:
-    secret-id: AKIDY0QqJrR0VsEc6czJmTApHnJfnpgLqEUb
-    secret-key: 0oPsAHBsOkogJisnV2PalqkalnlY8eOD
+    secret-id: 
+    secret-key: 
     region: ap-beijing
     bucket-name: sky-1306474759
