@@ -40,8 +40,8 @@ public class CommonController {
             String extension = originalFilename.substring(originalFilename.lastIndexOf("."));
             //构造新文件名称
             String objectName = UUID.randomUUID().toString() + extension;
-//            String filePath = txCosUtil.upload(file.getBytes(), objectName);
-            String filePath = aliOssUtil.upload(file.getBytes(), objectName);
+            String filePath = txCosUtil.upload(file.getBytes(), objectName);
+//            String filePath = aliOssUtil.upload(file.getBytes(), objectName);
             return  Result.success(filePath);
         } catch (IOException e) {
             log.error("文件上传失败：{}，",e);
