@@ -33,7 +33,7 @@ public interface CategoryMapper {
     void insert(Category category);
 
     /**
-     * 功能描述: 启用禁用分类
+     * 功能描述: 根据主键动态修改分类属性
      * @param category
      * @return :
      */
