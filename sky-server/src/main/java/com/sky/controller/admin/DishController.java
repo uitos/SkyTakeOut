@@ -89,9 +89,9 @@ public class DishController {
      * @param dishDTO
      * @return com.sky.result.Result
      */
-    @PostMapping
+    @PutMapping
     @ApiOperation("修改菜品")
-    public Result update(DishDTO dishDTO){
+    public Result update(@RequestBody DishDTO dishDTO){
         log.info("修改菜品,{}",dishDTO);
         dishService.updateWithFlavor(dishDTO);
         return Result.success();
