@@ -16,6 +16,11 @@ spring:
     multipart:
       max-file-size: 10240MB        # 设置单个文件最大大小为10240MB
       max-request-size: 10240MB    # 设置多个文件大小为10240MB
+  redis:
+    host: ${sky.redis.host}
+    port: ${sky.redis.port}
+    password: ${sky.redis.password}
+    database: ${sky.redis.database}
 
 mybatis:
   #mapper配置文件
