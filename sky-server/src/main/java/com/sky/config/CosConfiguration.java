@@ -15,7 +15,7 @@ public class CosConfiguration {
 
     @Bean
     public TXCosUtil txCosUtil(TXCosProperties txCosProperties){
-        log.info("开始创建阿里云文件上传工具类对象：{}",txCosProperties);
+        log.info("开始创建腾讯云文件上传工具类对象：{}",txCosProperties);
         return new TXCosUtil(txCosProperties.getSecretId(),
                 txCosProperties.getSecretKey(),
                 txCosProperties.getRegion(),
