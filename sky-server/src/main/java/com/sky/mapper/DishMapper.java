@@ -71,4 +71,12 @@ public interface DishMapper {
      * @return java.util.List<com.sky.entity.Dish>
      */
     List<Dish> list(Dish dish);
+
+    /**
+     * 功能描述: 根据套餐id查询菜品
+     * @param setmealId
+     * @return java.util.List<com.sky.entity.Dish>
+     */
+    @Select("select d.* from dish d left join setmeal_dish sd on d.id = sd.dish_id where setmeal_id = #{setmealId}")
+    List<Dish> getBySetmealId(long setmealId);
 }

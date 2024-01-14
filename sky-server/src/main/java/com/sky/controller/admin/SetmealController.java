@@ -56,4 +56,17 @@ public class SetmealController {
         setmealService.update(setmealDTO);
         return Result.success();
     }
+    /**
+     * 功能描述: 启用禁用套餐
+     * @param status
+     * @param id
+     * @return com.sky.result.Result
+     */
+    @PostMapping("/status/{status}")
+    @ApiOperation("启用禁用套餐")
+    public Result enableOrDisable(@PathVariable Integer status,long id){
+        log.info("启用禁用套餐,{},{}",status,id);
+        setmealService.enableOrDisable(status,id);
+        return Result.success();
+    }
 }
