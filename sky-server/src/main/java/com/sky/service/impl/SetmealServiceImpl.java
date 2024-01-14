@@ -130,4 +130,23 @@ public class SetmealServiceImpl implements SetmealService {
                 .build();
         setmealMapper.update(setmeal);
     }
+
+    /**
+     * 功能描述: 批量删除套餐
+     * @param ids
+     */
+    @Override
+    @Transactional
+    public void deleteBatch(List<Long> ids) {
+        ids.forEach(id ->{
+            Setmeal setmeal = setmealMapper.getById(id);
+            if(setmeal.getStatus() == StatusConstant.ENABLE){
+                throw new SetmealEnableFailedException(MessageConstant.SETMEAL_ON_SALE);
+            }
+        });
+        //根据套餐id集合批量删除套餐表中的数据
+        setmealMapper.deleteByIds(ids);
+        //根据套餐id集合批量删除套餐菜品关系表中的数据
+        setmealDishMapper.deleteBySetmealIds(ids);
+    }
 }
