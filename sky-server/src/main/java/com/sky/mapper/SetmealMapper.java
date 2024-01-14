@@ -33,4 +33,19 @@ public interface SetmealMapper {
      * @return com.github.pagehelper.Page<com.sky.vo.SetmealVO>
      */
     Page<SetmealVO> pageQuery(SetmealPageQueryDTO setmealPageQueryDTO);
+
+    /**
+     * 功能描述: 根据id查询套餐
+     * @param id
+     * @return com.sky.vo.Setmeal
+     */
+    @Select("select * from setmeal where id = #{id}")
+    Setmeal getById(Long id);
+
+    /**
+     * 功能描述: 更新套餐
+     * @param setmeal
+     */
+    @AutoFill(OperationType.UPDATE)
+    void update(Setmeal setmeal);
 }
