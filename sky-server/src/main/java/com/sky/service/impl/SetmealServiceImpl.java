@@ -149,4 +149,15 @@ public class SetmealServiceImpl implements SetmealService {
         //根据套餐id集合批量删除套餐菜品关系表中的数据
         setmealDishMapper.deleteBySetmealIds(ids);
     }
+
+    /**
+     * 功能描述: 条件查询
+     * @param setmeal
+     * @return java.util.List<com.sky.entity.Setmeal>
+     */
+    @Override
+    public List<Setmeal> list(Setmeal setmeal) {
+        List<Setmeal> list = setmealMapper.list(setmeal);
+        return list;
+    }
 }

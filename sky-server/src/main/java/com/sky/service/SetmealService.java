@@ -2,6 +2,7 @@ package com.sky.service;
 
 import com.sky.dto.SetmealDTO;
 import com.sky.dto.SetmealPageQueryDTO;
+import com.sky.entity.Setmeal;
 import com.sky.result.PageResult;
 import com.sky.vo.SetmealVO;
 
@@ -46,4 +47,10 @@ public interface SetmealService {
      * @param ids
      */
     void deleteBatch(List<Long> ids);
+    /**
+     * 功能描述: 条件查询
+     * @param setmeal
+     * @return java.util.List<com.sky.entity.Setmeal>
+     */
+    List<Setmeal> list(Setmeal setmeal);
 }

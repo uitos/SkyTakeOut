@@ -56,4 +56,11 @@ public interface SetmealMapper {
      * @param ids
      */
     void deleteByIds(List<Long> ids);
+
+    /**
+     * 功能描述: 动态条件查询套餐
+     * @param setmeal
+     * @return java.util.List<com.sky.entity.Setmeal>
+     */
+    List<Setmeal> list(Setmeal setmeal);
 }
