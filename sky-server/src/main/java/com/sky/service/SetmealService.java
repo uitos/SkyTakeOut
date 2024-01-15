@@ -4,6 +4,7 @@ import com.sky.dto.SetmealDTO;
 import com.sky.dto.SetmealPageQueryDTO;
 import com.sky.entity.Setmeal;
 import com.sky.result.PageResult;
+import com.sky.vo.DishItemVO;
 import com.sky.vo.SetmealVO;
 
 import java.util.List;
@@ -53,4 +54,11 @@ public interface SetmealService {
      * @return java.util.List<com.sky.entity.Setmeal>
      */
     List<Setmeal> list(Setmeal setmeal);
+
+    /**
+     * 功能描述: 根据id查询菜品选项
+     * @param id
+     * @return java.util.List<com.sky.vo.DishItemVO>
+     */
+    List<DishItemVO> getDishItemById(Long id);
 }

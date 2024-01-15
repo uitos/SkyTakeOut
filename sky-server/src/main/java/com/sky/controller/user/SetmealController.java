@@ -38,4 +38,15 @@ public class SetmealController {
         return Result.success(list);
     }
 
+    /**
+     * 功能描述: 根据套餐id查询包含的菜品列表
+     * @param id
+     * @return com.sky.result.Result<java.util.List<com.sky.vo.DishItemVO>>
+     */
+    @GetMapping("/dish/{id}")
+    @ApiOperation("根据套餐id查询包含的菜品列表")
+    public Result<List<DishItemVO>> dishList(@PathVariable("id") Long id) {
+        List<DishItemVO> list = setmealService.getDishItemById(id);
+        return Result.success(list);
+    }
 }
