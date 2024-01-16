@@ -36,4 +36,10 @@ public interface AddressBookService {
      * @param addressBook
      */
     void setDefault(AddressBook addressBook);
+
+    /**
+     * 功能描述: 根据id删除地址
+     * @param id
+     */
+    void deleteById(Long id);
 }

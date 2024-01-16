@@ -106,4 +106,17 @@ public class AddressBookController {
 
         return Result.error("没有查询到默认地址");
     }
+
+    /**
+     * 功能描述: 根据id删除地址
+     * @param id
+     * @return com.sky.result.Result
+     */
+    @DeleteMapping
+    @ApiOperation("根据id删除地址")
+    public Result deleteById(Long id) {
+        log.info("根据id删除地址,{}",id);
+        addressBookService.deleteById(id);
+        return Result.success();
+    }
 }

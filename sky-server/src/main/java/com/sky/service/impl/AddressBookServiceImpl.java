@@ -76,4 +76,13 @@ public class AddressBookServiceImpl implements AddressBookService {
         addressBookMapper.update(addressBook);
 
     }
+
+    /**
+     * 功能描述: 根据id删除地址
+     * @param id
+     */
+    @Override
+    public void deleteById(Long id) {
+        addressBookMapper.deleteById(id);
+    }
 }
