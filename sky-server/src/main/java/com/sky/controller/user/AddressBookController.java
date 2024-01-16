@@ -1,5 +1,6 @@
 package com.sky.controller.user;
 
+import com.sky.context.BaseContext;
 import com.sky.entity.AddressBook;
 import com.sky.result.Result;
 import com.sky.service.AddressBookService;
@@ -83,5 +84,26 @@ public class AddressBookController {
         log.info("设置默认地址,{}",addressBook);
         addressBookService.setDefault(addressBook);
         return Result.success();
+    }
+
+    /**
+     * 功能描述:  查询默认地址
+     * @return com.sky.result.Result<com.sky.entity.AddressBook>
+     */
+    @GetMapping("default")
+    @ApiOperation("查询默认地址")
+    public Result<AddressBook> getDefault() {
+        log.info("查询默认地址");
+        //SQL:select * from address_book where user_id = ? and is_default = 1
+        AddressBook addressBook = new AddressBook();
+        addressBook.setIsDefault(1);
+        addressBook.setUserId(BaseContext.getCurrentId());
+        List<AddressBook> list = addressBookService.list(addressBook);
+
+        if (list != null && list.size() == 1) {
+            return Result.success(list.get(0));
+        }
+
+        return Result.error("没有查询到默认地址");
     }
 }
