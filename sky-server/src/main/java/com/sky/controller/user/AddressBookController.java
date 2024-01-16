@@ -9,6 +9,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/user/addressBook")
 @Api(tags = "C端-地址簿接口")
@@ -30,5 +32,17 @@ public class AddressBookController {
         addressBookService.save(addressBook);
         return Result.success();
     }
+    /**
+     * 功能描述: 条件查询
+     * @param addressBook
+     * @return com.sky.result.Result<com.sky.entity.AddressBook>
+     */
 
+    @GetMapping("/list")
+    @ApiOperation("条件查询地址")
+    public Result<List<AddressBook>> list(AddressBook addressBook){
+        log.info("条件查询地址，{}",addressBook);
+        List<AddressBook> addressBookList = addressBookService.list(addressBook);
+        return Result.success(addressBookList);
+    }
 }
