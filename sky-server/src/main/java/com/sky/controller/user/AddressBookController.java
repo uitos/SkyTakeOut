@@ -13,8 +13,8 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/user/addressBook")
-@Api(tags = "C端-地址簿接口")
 @Slf4j
+@Api(tags = "C端-地址簿接口")
 public class AddressBookController {
 
     @Autowired
@@ -32,17 +32,43 @@ public class AddressBookController {
         addressBookService.save(addressBook);
         return Result.success();
     }
+
     /**
      * 功能描述: 条件查询
      * @param addressBook
      * @return com.sky.result.Result<com.sky.entity.AddressBook>
      */
-
     @GetMapping("/list")
     @ApiOperation("条件查询地址")
     public Result<List<AddressBook>> list(AddressBook addressBook){
         log.info("条件查询地址，{}",addressBook);
         List<AddressBook> addressBookList = addressBookService.list(addressBook);
         return Result.success(addressBookList);
+    }
+
+    /**
+     * 功能描述: 根据id查询地址
+     * @param id
+     * @return com.sky.result.Result<com.sky.entity.AddressBook>
+     */
+    @GetMapping("/{id}")
+    @ApiOperation("根据id查询地址")
+    public Result<AddressBook> getById(@PathVariable Long id){
+        log.info("根据id查询地址,{}",id);
+        AddressBook addressBook = addressBookService.getById(id);
+        return Result.success(addressBook);
+    }
+
+    /**
+     * 功能描述: 根据id修改地址
+     * @param addressBook
+     * @return com.sky.result.Result
+     */
+    @PutMapping
+    @ApiOperation("根据id修改地址")
+    public Result update(@RequestBody AddressBook addressBook){
+        log.info("根据id修改地址,{}",addressBook);
+        addressBookService.update(addressBook);
+        return Result.success();
     }
 }

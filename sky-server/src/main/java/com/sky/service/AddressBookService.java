@@ -17,4 +17,17 @@ public interface AddressBookService {
      * @return java.util.List<com.sky.entity.AddressBook>
      */
     List<AddressBook> list(AddressBook addressBook);
+
+    /**
+     * 功能描述: 根据id查询地址
+     * @param id
+     * @return com.sky.entity.AddressBook
+     */
+    AddressBook getById(Long id);
+
+    /**
+     * 功能描述: 根据id修改地址
+     * @param addressBook
+     */
+    void update(AddressBook addressBook);
 }

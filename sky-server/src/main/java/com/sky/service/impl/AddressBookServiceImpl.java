@@ -41,4 +41,23 @@ public class AddressBookServiceImpl implements AddressBookService {
 
         return addressBookMapper.list(addressBook);
     }
+
+    /**
+     * 功能描述: 根据id查询地址
+     * @param id
+     * @return com.sky.entity.AddressBook
+     */
+    @Override
+    public AddressBook getById(Long id) {
+        return addressBookMapper.getById(id);
+    }
+
+    /**
+     * 功能描述: 根据id修改地址
+     * @param addressBook
+     */
+    @Override
+    public void update(AddressBook addressBook) {
+        addressBookMapper.update(addressBook);
+    }
 }
