@@ -71,4 +71,17 @@ public class AddressBookController {
         addressBookService.update(addressBook);
         return Result.success();
     }
+
+    /**
+     * 功能描述: 设置默认地址
+     * @param addressBook
+     * @return com.sky.result.Result
+     */
+    @PutMapping("/default")
+    @ApiOperation("设置默认地址")
+    public Result setDefault(@RequestBody AddressBook addressBook){
+        log.info("设置默认地址,{}",addressBook);
+        addressBookService.setDefault(addressBook);
+        return Result.success();
+    }
 }
