@@ -19,4 +19,12 @@ public interface UserMapper {
      * @param user
      */
     void insert(User user);
+
+    /**
+     * 功能描述: 根据id查询用户
+     * @param id
+     * @return com.sky.entity.User
+     */
+    @Select("select * from user where id = #{id}")
+    User getById(Long id);
 }
