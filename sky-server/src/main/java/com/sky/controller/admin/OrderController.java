@@ -77,4 +77,15 @@ public class OrderController {
         orderService.rejection(ordersRejectionDTO);
         return Result.success();
     }
+    /**
+     * 功能描述: 取消订单
+     * @param ordersCancelDTO
+     * @return com.sky.result.Result
+     */
+    @PutMapping("/cancel")
+    @ApiOperation("取消订单")
+    public Result cancel(@RequestBody OrdersCancelDTO ordersCancelDTO) throws Exception {
+        orderService.cancel(ordersCancelDTO);
+        return Result.success();
+    }
 }
