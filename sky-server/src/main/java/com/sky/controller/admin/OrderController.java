@@ -88,4 +88,28 @@ public class OrderController {
         orderService.cancel(ordersCancelDTO);
         return Result.success();
     }
+
+    /**
+     * 功能描述: 派送订单
+     * @param id
+     * @return com.sky.result.Result
+     */
+    @PutMapping("/delivery/{id}")
+    @ApiOperation("派送订单")
+    public Result delivery(@PathVariable("id") Long id) {
+        orderService.delivery(id);
+        return Result.success();
+    }
+
+    /**
+     * 功能描述: 完成订单
+     * @param id
+     * @return com.sky.result.Result
+     */
+    @PutMapping("/complete/{id}")
+    @ApiOperation("完成订单")
+    public Result complete(@PathVariable("id") Long id) {
+        orderService.complete(id);
+        return Result.success();
+    }
 }
