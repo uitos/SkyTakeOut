@@ -45,5 +45,11 @@ public interface OrderMapper {
     Integer countStatus(Integer status);
 
 
-
+    /**
+     * 功能描述: 根据id查询订单信息
+     * @param id
+     * @return com.sky.entity.Orders
+     */
+    @Select("select * from orders where id = #{id}")
+    Orders getById(Long id);
 }
