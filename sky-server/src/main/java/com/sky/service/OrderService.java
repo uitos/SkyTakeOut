@@ -78,4 +78,11 @@ public interface OrderService {
      * @param id
      */
     void complete(Long id);
+
+    /**
+     * 功能描述: 用户端订单分页查询
+     * @param ordersPageQueryDTO
+     * @return com.sky.result.PageResult
+     */
+    PageResult pageQueryUser(OrdersPageQueryDTO ordersPageQueryDTO);
 }

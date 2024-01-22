@@ -323,4 +323,30 @@ public class OrderServiceImpl implements OrderService {
                 .build();
         orderMapper.update(orders);
     }
+
+    /**
+     * 功能描述: 用户端订单分页查询
+     * @param ordersPageQueryDTO
+     * @return com.sky.result.PageResult
+     */
+    @Override
+    public PageResult pageQueryUser(OrdersPageQueryDTO ordersPageQueryDTO) {
+        ordersPageQueryDTO.setUserId(BaseContext.getCurrentId());
+        // 分页条件查询
+        PageHelper.startPage(ordersPageQueryDTO.getPage(),ordersPageQueryDTO.getPageSize());
+        Page<Orders> page = orderMapper.pageQuery(ordersPageQueryDTO);
+        // 查询出订单明细，并封装入OrderVO进行响应
+        ArrayList<OrderVO> list = new ArrayList();
+        if(page != null && page.getTotal() > 0){
+            for(Orders orders : page){
+                List<OrderDetail> orderDetails = orderDetailMapper.getByOrderId(orders.getId());
+                OrderVO orderVO = new OrderVO();
+                BeanUtils.copyProperties(orders,orderVO);
+                orderVO.setOrderDetailList(orderDetails);
+                list.add(orderVO);
+            }
+
+        }
+        return new PageResult(page.getPages(), list);
+    }
 }
