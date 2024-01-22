@@ -46,6 +46,11 @@ public class OrderController {
         return Result.success(orderStatisticsVO);
     }
 
+    /**
+     * 功能描述: 查询订单详情
+     * @param id
+     * @return com.sky.result.Result<com.sky.vo.OrderVO>
+     */
     @GetMapping("/details/{id}")
     @ApiOperation("查询订单详情")
     public Result<OrderVO> details(@PathVariable Long id){
