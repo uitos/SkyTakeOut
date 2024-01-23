@@ -29,6 +29,8 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 @Service
 @Slf4j
@@ -385,5 +387,28 @@ public class OrderServiceImpl implements OrderService {
         }
 
         orderMapper.update(orders);
+    }
+
+    /**
+     * 功能描述: 再来一单
+     * @param id
+     */
+    @Override
+    public void repetition(Long id) {
+        //再来一单就是将原订单中的商品重新加入到购物车中
+        Orders orders = orderMapper.getById(id);
+        if(orders == null){
+            throw new OrderBusinessException(MessageConstant.ORDER_NOT_FOUND);
+        }
+
+        List<OrderDetail> orderDetailList = orderDetailMapper.getByOrderId(orders.getId());
+        List<ShoppingCart> shoppingCartList = orderDetailList.stream().map(orderDetail -> {
+            ShoppingCart cart = new ShoppingCart();
+            BeanUtils.copyProperties(orderDetail, cart,"id");
+            cart.setUserId(BaseContext.getCurrentId());
+            cart.setCreateTime(LocalDateTime.now());
+            return cart;
+        }).collect(Collectors.toList());
+        shoppingCartMapper.insertBatch(shoppingCartList);
     }
 }

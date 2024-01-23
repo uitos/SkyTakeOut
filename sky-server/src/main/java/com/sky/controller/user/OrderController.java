@@ -93,4 +93,18 @@ public class OrderController {
         orderService.userCancelById(id);
         return Result.success();
     }
+
+    /**
+     * 功能描述: 再来一单
+     * @param id
+     * @return com.sky.result.Result
+     */
+    @PostMapping("/repetition/{id}")
+    @ApiOperation("再来一单")
+    public Result repetition(@PathVariable Long id){
+        log.info("再来一单,{}",id);
+        orderService.repetition(id);
+        return Result.success();
+    }
+
 }
