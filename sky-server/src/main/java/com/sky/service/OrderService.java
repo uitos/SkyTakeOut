@@ -85,4 +85,10 @@ public interface OrderService {
      * @return com.sky.result.PageResult
      */
     PageResult pageQueryUser(OrdersPageQueryDTO ordersPageQueryDTO);
+
+    /**
+     * 功能描述: 用户取消订单
+     * @param id
+     */
+    void userCancelById(Long id);
 }
