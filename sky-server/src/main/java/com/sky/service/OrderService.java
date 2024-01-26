@@ -97,4 +97,10 @@ public interface OrderService {
      * @param id
      */
     void repetition(Long id);
+
+    /**
+     * 功能描述: 客户催单
+     * @param id
+     */
+    void reminder(Long id);
 }

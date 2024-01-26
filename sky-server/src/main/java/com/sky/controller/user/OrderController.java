@@ -106,5 +106,17 @@ public class OrderController {
         orderService.repetition(id);
         return Result.success();
     }
+    /**
+     * 功能描述: 客户催单
+     * @param id
+     * @return com.sky.result.Result
+     */
+    @GetMapping("/reminder/{id}")
+    @ApiOperation("客户催单")
+    public Result reminder(@PathVariable Long id){
+        log.info("客户催单,订单为，{}",id);
+        orderService.reminder(id);
+        return Result.success();
+    }
 
 }
